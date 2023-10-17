@@ -1,7 +1,7 @@
 # YouTube-API-integration-Data-Lake-creation-
 
 Introduction:
-The YouTube Data Analysis Project efficiently manages, transforms, and analyzes YouTube video data. It focuses on efficiently managing, transforming, and analyzing structured and semi-structured YouTube video data. In this project, I Built an ETL(Extract,Transform,Load) pipeline using a Dataset from Kaggle in regards of trending youtube videos. The pipeline will retrieve data from the dataset, transformed it to a desired format(parquet) and load data at the end. After the data has been loaded, a glue crawler will be used to crawl upon to create a glue catalog which will be used later on for analytics in Athena.
+The YouTube Data Analysis Project efficiently manages, transforms, and analyzes structured and semi-structured YouTube video data. In this project, I Built an ETL(Extract, Transform, Load) pipeline using a static dataset of trending YouTube videos. The pipeline will retrieve data from the dataset, transform it to a desired format(parquet), and load data into s3. After the data has been loaded, a glue crawler will be used to create a glue catalog which will be used later on for analytics using Athena.
 
 
 
@@ -21,13 +21,13 @@ Services Used:
 
 
 Project Execution Flow
-Create an S3 Bucket for Raw Data --> Load data using the CLI commands -->Create a Crawler and Crawl Open the Data --> Create Glue Catalog --> Error with the Json Format(Serde) --> Pre-processing the data --> Json-to-paruqet-transformation --> Run a crawler again --> query in Athena for analytics --> Create a new DB for the Target --> Crate a new Glue Job(Do neccessary transformations such as dropping null fields, and arranging the schema) --> Add a S3 Trigger to Orchestrate --> Create a Glue Job To Join(inner) tables --> Load data to Final Target --> Quicksight for Visualizations
+Create an S3 Bucket for Raw Data --> Load data using the CLI commands -->Create a Crawler and Crawl Open the Data --> Create Glue Catalog --> Error with the Json Format(Serde) --> Pre-processing the data --> Json-to-parquet-transformation --> Run a crawler again --> query in Athena for analytics --> Create a new DB for the Target --> Crate a new Glue Job(Do necessary transformations such as dropping null fields, and arranging the schema) --> Add a S3 Trigger to Orchestrate --> Create a Glue Job To Join(inner) tables --> Load data to Final Target --> Quicksight for Visualizations
 
 
 
 
 Dataset Used:
-The project utilizes a Kaggle dataset that contains daily statistics of popular YouTube videos. The dataset includes CSV files with information such as video title, channel title, publication time, tags, views, likes, dislikes, description, and comment count. Additionally, a JSON file provides category details specific toeach region.
+The project utilizes a statc dataset that contains daily statistics of popular YouTube videos. The dataset includes CSV files with information such as video title, channel title, publication time, tags, views, likes, dislikes, description, and comment count. Additionally, a JSON file provides category details specific to each region.
 LINK: https://www.kaggle.com/datasets/datasnaek/youtube-new
 
 
